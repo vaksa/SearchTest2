@@ -13,9 +13,9 @@ import java.util.Random;
 @DefaultUrl("https://www.ss.com/{ru|lv}/*/search-result/*")
 public class SearchResultPage extends PageObject {
 
-    private final String SEARCHED_ITEMS = "//table//tr[@id='head_line']/following-sibling::tr[@style!='display:none;']";
-    private final String ITEM_CHECKBOX = ".//input[@type='checkbox']";
-    private final String ITEM_TEXT = ".//div[@class='d1']//a";
+    private final static String SEARCHED_ITEMS = "//table//tr[@id='head_line']/following-sibling::tr[@style!='display:none;']";
+    private final static String ITEM_CHECKBOX = ".//input[@type='checkbox']";
+    private final static String ITEM_TEXT = ".//div[@class='d1']//a";
 
     @FindBy(xpath = "//table[@id='page_main']//a[@href='/ru/electronics/search/']")
     private WebElementFacade advancedSearchLink;
