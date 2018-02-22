@@ -2,11 +2,11 @@ package RigaTask.pages;
 
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
+import org.openqa.selenium.WebDriver;
 
 @DefaultUrl("https://www.ss.com")
-public class HomePage extends PageObject {
+public class HomePage extends AbstractPage {
 
     private final static String SECTION_TO_SELECT = "//h2/a[contains(@href, '%s')]";
 
@@ -16,8 +16,8 @@ public class HomePage extends PageObject {
     @FindBy(xpath = "//span[@class='menu_lang']/a")
     private WebElementFacade languageMenuLink;
 
-    public void maximazeWindow() {
-        getDriver().manage().window().maximize();
+    public HomePage(final WebDriver driver) {
+        super(driver);
     }
 
     public void switchLanguage(final String lang) {

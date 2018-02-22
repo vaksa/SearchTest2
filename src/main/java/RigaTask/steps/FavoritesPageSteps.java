@@ -24,6 +24,6 @@ public class FavoritesPageSteps extends ScenarioSteps {
     }
 
     private List<String> cutStringInList(final List<String> list) {
-        return list.stream().map(s -> s.substring(0, 80)).collect(Collectors.toList());
+        return list.stream().map(s -> s.substring(0, 50)).collect(Collectors.toList());
     }
 }

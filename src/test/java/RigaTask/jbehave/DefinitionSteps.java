@@ -6,6 +6,7 @@ import RigaTask.steps.SearchPageSteps;
 import RigaTask.steps.SearchResultPageSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
+import org.jbehave.core.model.ExamplesTable;
 
 public class DefinitionSteps {
 
@@ -23,10 +24,10 @@ public class DefinitionSteps {
 
     @Given("open the browser and maximize it")
     public void givenOpenTheBrowserAndMaximizeIt() {
-        homePageSteps.openAndMaximize();
+        homePageSteps.open_home_page();
     }
 
-    @Given("switch to '$language' language")
+    @Given("switch language to '$language'")
     public void givenSwitchToRussianLanguage(final String language) {
         homePageSteps.switch_language(language);
     }
@@ -40,13 +41,14 @@ public class DefinitionSteps {
     public void whenOpenSearchAndInSearchEnterTheSearchPhrase(final String phrase) {
         homePageSteps.open_search_page();
         searchPageSteps.enter_phrase_into_search_field(phrase);
-
     }
 
-    @When("select a different search parameters and click Search button")
-    public void whenSelectADifferentSearchParametersAndClickSearchButton() {
-        searchPageSteps.select_region("Riga");  // Could be set in .story file
-        searchPageSteps.select_period("30");    // Could be set in .story file
+    @When("select a different search parameters and click Search button: $table")
+    public void whenSelectADifferentSearchParametersAndClickSearchButton(final ExamplesTable table) {
+        String region = table.getRowAsParameters(0).valueAs("region", String.class);
+        String period = table.getRowAsParameters(0).valueAs("period", String.class);
+        searchPageSteps.select_region(region);
+        searchPageSteps.select_period(period);
         searchPageSteps.click_search_button();
     }
 
@@ -65,6 +67,7 @@ public class DefinitionSteps {
         searchResultPageSteps.open_advanced_search();
     }
 
+    //  In case there is no any result change min/max value
     @When("enter search option price between '$min' and '$max'")
     public void whenEnterSearchOptionPriceBetween(final String min, final String max) {
         searchPageSteps.set_min_price(min);

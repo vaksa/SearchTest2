@@ -3,15 +3,15 @@ package RigaTask.pages;
 
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
+import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 @DefaultUrl("https://www.ss.com/{ru|lv}/*/search-result/*")
-public class SearchResultPage extends PageObject {
+public class SearchResultPage extends AbstractPage {
 
     private final static String SEARCHED_ITEMS = "//table//tr[@id='head_line']/following-sibling::tr[@style!='display:none;']";
     private final static String ITEM_CHECKBOX = ".//input[@type='checkbox']";
@@ -40,6 +40,10 @@ public class SearchResultPage extends PageObject {
 
     @FindBy(xpath = "//a[contains(@onclick, 'af')]")
     private WebElementFacade addToBookmarks;
+
+    public SearchResultPage(final WebDriver driver) {
+        super(driver);
+    }
 
     public void click_add_to_memo() {
         addToBookmarks.click();

@@ -9,8 +9,7 @@ public class HomePageSteps extends ScenarioSteps {
     private HomePage homePage;
 
     @Step
-    public void openAndMaximize() {
-        homePage.maximazeWindow();
+    public void open_home_page() {
         homePage.open();
     }
 

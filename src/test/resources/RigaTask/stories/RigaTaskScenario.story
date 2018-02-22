@@ -2,10 +2,12 @@
 
 Scenario: Riga Scenario
 Given open the browser and maximize it
-And switch to 'RU' language
+And switch language to 'RU'
 When go to the section 'electronics'
 And open search and in Search enter the search phrase 'Computer'
-And select a different search parameters and click Search button
+And select a different search parameters and click Search button:
+|region|period|
+|Riga  |30    |
 And Sort the results by price
 And select option 'sell' in 'Operation' dropdown
 And open advanced search

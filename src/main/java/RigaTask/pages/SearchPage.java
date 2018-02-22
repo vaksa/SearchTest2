@@ -3,11 +3,11 @@ package RigaTask.pages;
 
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
+import org.openqa.selenium.WebDriver;
 
 @DefaultUrl("https://www.ss.com/{ru|lv}/search/")
-public class SearchPage extends PageObject {
+public class SearchPage extends AbstractPage {
 
     @FindBy(xpath = "//input[contains(@onkeyup, 'preload_search')]")
     private WebElementFacade searchInput;
@@ -27,6 +27,9 @@ public class SearchPage extends PageObject {
     @FindBy(xpath = "//input[@type='submit']")
     private WebElementFacade searchButton;
 
+    public SearchPage(final WebDriver driver) {
+        super(driver);
+    }
 
     public void enterPhraseIntoSearchField(final String phrase) {
         searchInput.sendKeys(phrase);
